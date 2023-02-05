@@ -16,7 +16,6 @@ function getArrayParams(...arr) {
   return { min: min, max: max, avg: avg };
 }
 
-
 function summElementsWorker(...arr) {
   let sumElements = 0;
   for (let i = 0; i < arr.length; i++) {
