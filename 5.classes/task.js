@@ -87,4 +87,39 @@ class PrintEditionItem {
       return findResult || null;
     }
   }
+ 
+  class Student {
+    constructor(name) {
+      this.name = name;
+      this.marks = {};
+    }
   
+    addMark(mark, subject) {
+      if (mark >= 2 && mark <= 5) {
+        if (Object.keys(this.marks).includes(subject) === false) {
+          this.marks[subject] = []; 
+        }
+        this.marks[subject].push(mark); 
+      }
+    }
+  
+    getAverageBySubject(subject) {
+      if ((Object.keys(this.marks).includes(subject) === false)) {
+        return 0;
+      } else {
+        let sum = 0;
+        for (let index = 0; index < this.marks[subject].length; index++) {
+          sum += this.marks[subject][index];
+        }
+        return sum / this.marks[subject].length;
+      }
+    }
+    
+    getAverage() {
+      let sum = 0;
+      for (let index = 0; index < Object.keys(this.marks).length; index++) {
+        sum += this.getAverageBySubject(Object.keys(this.marks)[index]);
+      }
+      return sum / Object.keys(this.marks).length;
+    }
+  }
